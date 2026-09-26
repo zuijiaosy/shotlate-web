@@ -1,11 +1,18 @@
 // User manual content, kept in sync with the Shotlate README.
-// Markup: [key] renders as a key cap, `text` as inline code.
+// Markup: [key] renders as a key cap, `text` as inline code, [text](url) as a link.
+
+export type ManualStep = {
+  title: string
+  text: string[]
+  shot?: { src: string; w: number; h: number; alt: string }
+}
 
 export type ManualSection = {
   id: string
   title: string
   intro?: string[]
   rows?: [string, string][]
+  steps?: ManualStep[]
   after?: string[]
   code?: string
 }
@@ -17,6 +24,7 @@ export const manual: ManualSection[] = [
     intro: [
       '第一次启动后，打开「系统设置 → 隐私与安全性 → 屏幕与系统录音」，允许 Shotlate，然后退出并重新打开 Shotlate。没有这项权限时，截到的只有桌面壁纸。',
       'Shotlate 常驻在菜单栏，没有 Dock 图标。截图、延时截图、扫码、贴图和设置都从菜单栏图标进入。',
+      'Windows 版常驻在任务栏右下角的托盘里，不需要屏幕录制授权；第一次打开时会询问是否下载文字识别组件（约 23 MB）。长截图、扫码、延时截图、从剪贴板贴图、贴图翻译和再标注目前只有 macOS 版，下面对应的部分可以跳过。',
     ],
   },
   {
@@ -65,6 +73,54 @@ export const manual: ManualSection[] = [
     ],
   },
   {
+    id: 'translate',
+    title: '翻译',
+    intro: [
+      '翻译要用到一个 OpenAI 兼容接口的 API Key，识别文字不需要。Shotlate 默认使用 DeepSeek，下面以 DeepSeek 为例，从注册到能用大约 5 分钟。发给接口的只有识别出的文字，截图本身不会上传。',
+    ],
+    steps: [
+      {
+        title: '注册 DeepSeek 开放平台账号',
+        text: [
+          '打开 [DeepSeek 开放平台](https://platform.deepseek.com/sign_up)，填手机号、设置密码，点「发送验证码」并填入短信里的验证码，再点「注册」。已经有 DeepSeek 账号（比如用过网页版对话）的话直接登录即可，两者是同一个账号。',
+        ],
+        shot: { src: '/shots/deepseek-signup.webp', w: 1200, h: 983, alt: 'DeepSeek 开放平台注册页：手机号、密码、确认密码、验证码和注册按钮' },
+      },
+      {
+        title: '充值',
+        text: [
+          '登录后点左侧的「充值」，选一个金额（最低 ¥10，也可以自定义），支付方式选支付宝或微信支付，点「去支付」扫码付款。余额到账后就可以调用接口。',
+          '翻译一次截图只用很少的 token，按 `deepseek-flash` 的价格一次通常不到一分钱，¥10 可以用很久。具体价格见 [DeepSeek 模型与价格](https://api-docs.deepseek.com/zh-cn/quick_start/pricing)。这里的余额只用于 API 调用，和网页版、App 对话无关。',
+        ],
+        shot: { src: '/shots/deepseek-topup.webp', w: 1400, h: 916, alt: 'DeepSeek 充值页：金额 ¥10 到 ¥500 或自定义，支付宝和微信支付' },
+      },
+      {
+        title: '创建 API Key',
+        text: ['点左侧的「API keys」，再点右上角的「创建 API key」。名称随便填，比如 `Shotlate`，方便以后认出这个 Key 是给谁用的，然后点「创建」。'],
+        shot: { src: '/shots/deepseek-key-create.webp', w: 1200, h: 633, alt: '「创建 API key」对话框，名称填了 Shotlate' },
+      },
+      {
+        title: '复制 Key',
+        text: [
+          '创建后弹出的对话框里会显示完整的 Key（以 `sk-` 开头），点复制。完整的 Key 只显示这一次，关掉后列表里只剩前后几位；忘了复制也没关系，删掉重新创建一个就行。',
+          '不要把 Key 发给别人或贴到公开的地方，别人拿到后可以直接花你的余额。',
+        ],
+        shot: { src: '/shots/deepseek-keys.webp', w: 1600, h: 425, alt: 'API keys 列表，新建的 Shotlate Key 只显示前后几位' },
+      },
+      {
+        title: '填进 Shotlate',
+        text: [
+          '点菜单栏的 Shotlate 图标 → 设置…，选左侧的「翻译」。把 Key 粘贴到「API Key」；Base URL（`https://api.deepseek.com`）和模型（`deepseek-flash`）保持默认值就行，改乱了可以点「恢复默认」。「译成」选你要的语言。',
+          '点「测试连接」，下方显示「连接成功」就配置好了。之后截图时按 [Y]，或在贴图上按 [Y]，译文会画回原位。',
+        ],
+      },
+    ],
+    after: [
+      '测试连接失败时看红字提示：「API Key 无效（401）」是 Key 填错、少复制了字符或已被删除；「账户余额不足（402）」需要先充值。',
+      '想换成其他服务，把 Base URL、模型和 Key 换成对应服务提供的值即可，只要是 OpenAI 兼容接口都能用。',
+    ],
+  },
+  {
     id: 'pin',
     title: '贴图',
     rows: [
@@ -104,7 +160,7 @@ export const manual: ManualSection[] = [
     title: '设置',
     intro: ['菜单栏 Shotlate → 设置 里可以修改截图、贴图、隐藏贴图和扫码的快捷键，保存位置和格式，以及设置登录时启动和自动检查更新。'],
     rows: [
-      ['翻译接口', 'Base URL 默认 `https://api.deepseek.com`，任何 OpenAI 兼容服务都可以用；模型默认 `deepseek-flash`；API Key 保存在 `~/Library/Application Support/Shotlate/api-key`，只有你的账户能读取。译文可选简体中文（默认）、繁體中文、English、日本語、한국어。填好后点「测试连接」检查配置'],
+      ['翻译接口', '申请和填写 Key 的步骤见[翻译](#translate)。Base URL 默认 `https://api.deepseek.com`，任何 OpenAI 兼容服务都可以用；模型默认 `deepseek-flash`；API Key 保存在 `~/Library/Application Support/Shotlate/api-key`，只有你的账户能读取。译文可选简体中文（默认）、繁體中文、English、日本語、한국어。填好后点「测试连接」检查配置'],
     ],
   },
 ]

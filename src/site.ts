@@ -1,5 +1,6 @@
 // Site-wide settings.
 const repo = 'https://github.com/zuijiaosy/shotlate'
+const winRepo = 'https://github.com/zuijiaosy/shotlate-win'
 
 export const site = {
   name: 'Shotlate',
@@ -12,6 +13,12 @@ export const site = {
   releasesUrl: `${repo}/releases/latest`,
   dmgUrl: (import.meta.env.VITE_DMG_URL as string | undefined) || null,
   sourceUrl: repo,
+  // The Windows version is a separate app (Rust) in its own repository, released on its own schedule.
+  win: {
+    minWindows: 'Windows 10 2004',
+    releasesUrl: `${winRepo}/releases/latest`,
+    sourceUrl: winRepo,
+  },
 }
 
 /** Where "download" goes: the R2 file when configured, otherwise the latest GitHub release. */

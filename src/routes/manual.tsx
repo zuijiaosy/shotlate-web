@@ -29,7 +29,9 @@ function Manual() {
       </aside>
       <article>
         <h1>使用手册</h1>
-        <p className="lead">这里是 Shotlate 的全部操作。快捷键里的 ⌘ 是 Command，⌥ 是 Option，⇧ 是 Shift。</p>
+        <p className="lead">
+          这里是 Shotlate 的全部操作。快捷键里的 ⌘ 是 Command，⌥ 是 Option，⇧ 是 Shift。Windows 版的操作相同，⌘ 换成 Ctrl、⌥ 换成 Alt，开始截图默认是 Alt+Shift+A。
+        </p>
         {manual.map((s) => (
           <section key={s.id} id={s.id} className="msec">
             <h2>{s.title}</h2>
@@ -56,8 +58,33 @@ function Manual() {
                 </table>
               </div>
             )}
+            {s.steps && (
+              <ol className="msteps">
+                {s.steps.map((step) => (
+                  <li key={step.title}>
+                    <h3>{step.title}</h3>
+                    {step.text.map((p) => (
+                      <p key={p}>
+                        <Rich text={p} />
+                      </p>
+                    ))}
+                    {step.shot && (
+                      <img
+                        className="shot"
+                        src={step.shot.src}
+                        width={step.shot.w}
+                        height={step.shot.h}
+                        alt={step.shot.alt}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
+                  </li>
+                ))}
+              </ol>
+            )}
             {s.after &&
-              (s.id === 'scroll' ? (
+              (s.id === 'scroll' || s.id === 'translate' ? (
                 <ul>
                   {s.after.map((p) => (
                     <li key={p}>

@@ -11,11 +11,16 @@ export const faqGroups: { title: string; items: Faq[] }[] = [
       },
       {
         q: '安装包多大？占多少内存？',
-        a: ['安装包约 3.5 MB，Apple 芯片和 Intel 通用。常驻菜单栏时，活动监视器里的内存占用约 50 MB。'],
+        a: [
+          '安装包约 3.5 MB，Apple 芯片和 Intel 通用。常驻菜单栏时，活动监视器里的内存占用约 50 MB。',
+          'Windows 版安装包约 7 MB，x64 和 ARM64 分开下载；文字识别组件约 23 MB，第一次打开时下载。',
+        ],
       },
       {
         q: '支持哪些系统？',
-        a: ['只支持 macOS 14 及以上版本，Apple 芯片和 Intel 通用，没有 Windows 和 Linux 版。'],
+        a: [
+          'macOS 版支持 macOS 14 及以上，Apple 芯片和 Intel 通用。Windows 版支持 Windows 10 2004 及以上和 Windows 11，x64 和 ARM64（骁龙等）都有原生版本。没有 Linux 版。',
+        ],
       },
       {
         q: '截图里只有桌面壁纸，看不到窗口',
@@ -51,14 +56,15 @@ export const faqGroups: { title: string; items: Faq[] }[] = [
       {
         q: '翻译会上传我的截图吗？',
         a: [
-          '不会。文字识别用的是 macOS 自带的 Vision 框架，在本机完成。翻译时，Shotlate 只把识别出来的文字发给你在设置里填写的接口，截图本身不会离开你的电脑。',
+          '不会。文字识别在本机完成：macOS 版用系统自带的 Vision 框架，Windows 版用开源的 PP-OCRv6 模型。翻译时，Shotlate 只把识别出来的文字发给你在设置里填写的接口，截图本身不会离开你的电脑。',
         ],
       },
       {
         q: '翻译需要准备什么？',
         a: [
-          '需要一个 OpenAI 兼容接口的 API Key。默认接口是 DeepSeek（`https://api.deepseek.com`，模型 `deepseek-flash`），也可以换成其他兼容服务。在「设置 → 翻译」里填好 Base URL、模型和 Key，点「测试连接」确认能用。',
+          '需要一个 OpenAI 兼容接口的 API Key。默认接口是 DeepSeek（`https://api.deepseek.com`，模型 `deepseek-flash`），也可以换成其他兼容服务。在「设置 → 翻译」里填好 Base URL、模型和 Key，点「测试连接」确认能用。注册、充值和创建 Key 的完整步骤见[使用手册 → 翻译](/manual#translate)。',
           'Key 保存在 `~/Library/Application Support/Shotlate/api-key`，只有你的账户能读取；不放在钥匙串里，所以不会反复弹出登录密码框。',
+          'Windows 版的 Key 用系统的数据保护接口（DPAPI）加密后保存在 `%APPDATA%\\Shotlate\\api-key`，换一个 Windows 账户就解不开。',
         ],
       },
       {
@@ -73,6 +79,7 @@ export const faqGroups: { title: string; items: Faq[] }[] = [
         q: '第一次识别文字等了很久',
         a: [
           '同一个程序第一次调用 Vision 识别时，系统要先编译一次识别模型，可能需要几十秒，之后就很快。Shotlate 启动时会在后台先预热一次，所以通常感觉不到。',
+          'Windows 版要先下载识别组件（约 23 MB），第一次打开时会询问，也可以在「设置 → 通用」里下载。下载完成后启动时同样会在后台预热。',
         ],
       },
     ],
@@ -82,7 +89,7 @@ export const faqGroups: { title: string; items: Faq[] }[] = [
     items: [
       {
         q: '截图保存到哪里？',
-        a: ['按 [⌘S] 保存到设置里的文件夹，默认是「下载」文件夹；[⇧⌘S] 可以另存到别处。'],
+        a: ['按 [⌘S] 保存到设置里的文件夹，默认是「下载」文件夹；[⇧⌘S] 可以另存到别处。Windows 版对应 [Ctrl+S] 和 [Ctrl+Shift+S]。'],
       },
       {
         q: '怎么改工具的快捷键？',
@@ -96,7 +103,29 @@ export const faqGroups: { title: string; items: Faq[] }[] = [
       },
       {
         q: '快捷键 ⌥A 和其他软件冲突了',
-        a: ['在「设置」里改成别的组合。'],
+        a: ['在「设置」里改成别的组合。Windows 版默认是 [Alt+Shift+A]，特意避开了微信（Alt+A）和 QQ（Ctrl+Alt+A）的截图快捷键。'],
+      },
+    ],
+  },
+  {
+    title: 'Windows 版',
+    items: [
+      {
+        q: '安装时提示“Windows 已保护你的电脑”',
+        a: [
+          '安装包没有购买代码签名证书，第一次运行时 SmartScreen 会拦一下。点「更多信息」，再点「仍要运行」即可。安装不需要管理员权限，装在当前用户的目录下。',
+        ],
+      },
+      {
+        q: 'Windows 版和 macOS 版有什么不同？',
+        a: [
+          '截图、标注、识别文字、翻译、贴图和在贴图上选中文字的操作方式都一样：⌘ 换成 Ctrl，⌥ 换成 Alt，工具的单键快捷键（[1]–[7]、[X]、[Y]、[T]）不变，重做可以用 [Ctrl+Y] 或 [Ctrl+Shift+Z]。',
+          '长截图、扫码、延时截图、从剪贴板贴图、贴图翻译和贴图再标注目前只有 macOS 版。',
+        ],
+      },
+      {
+        q: 'Windows 版怎么更新？',
+        a: ['Shotlate 会自动检查更新，有新版本时提示你，由你决定何时安装。在「设置 → 通用」里可以关掉自动检查；也可以随时到下载页手动下载新版，直接覆盖安装。'],
       },
     ],
   },
@@ -111,7 +140,9 @@ export const faqGroups: { title: string; items: Faq[] }[] = [
       },
       {
         q: '在哪里反馈问题？',
-        a: ['请到项目的 GitHub 仓库提交 Issue，附上 macOS 版本、Shotlate 版本和复现步骤。'],
+        a: [
+          '请到项目的 GitHub 仓库提交 Issue，附上系统版本、Shotlate 版本和复现步骤。macOS 版在 [zuijiaosy/shotlate](https://github.com/zuijiaosy/shotlate/issues)，Windows 版在 [zuijiaosy/shotlate-win](https://github.com/zuijiaosy/shotlate-win/issues)。',
+        ],
       },
     ],
   },

@@ -160,6 +160,15 @@ kbd {
   background: #2b2f37;
   text-decoration: none;
 }
+/* second download button (Windows) next to the macOS one */
+.btn.alt {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1.5px var(--ink);
+}
+.btn.alt:hover {
+  background: var(--soft);
+}
 
 .more {
   font-weight: 500;
@@ -521,9 +530,27 @@ figcaption {
   margin-top: 56px;
 }
 
-.steps h2 {
+.steps h2,
+.steps h3 {
   font-size: 22px;
   margin-bottom: 14px;
+}
+
+/* download page: one block per platform */
+.platforms {
+  margin-top: 14px;
+  color: var(--ink-2);
+}
+h2.platform {
+  font-size: clamp(24px, 3vw, 30px);
+  margin-top: 64px;
+  margin-bottom: 12px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 80px;
+}
+h2.platform + p {
+  color: var(--ink-2);
 }
 
 .steps ol,
@@ -642,6 +669,46 @@ figcaption {
 
 .table td {
   color: var(--ink-2);
+}
+
+/* numbered how-to steps */
+.msteps {
+  list-style: none;
+  counter-reset: mstep;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.msteps > li {
+  counter-increment: mstep;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.msteps h3 {
+  font-size: 18px;
+}
+
+.msteps h3::before {
+  content: counter(mstep);
+  display: inline-grid;
+  place-items: center;
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 14px;
+  vertical-align: 2px;
+}
+
+.msteps .shot {
+  margin-top: 6px;
 }
 
 #automation .table th {

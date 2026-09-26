@@ -69,13 +69,14 @@ function Layout() {
         <div className="wrap foot-in">
           <div className="foot-brand">
             <img src="/icon-256.png" alt="" width="22" height="22" />
-            <span>Shotlate · 适用于 macOS {site.minMacOS} 及以上</span>
+            <span>Shotlate · 适用于 macOS {site.minMacOS} 及以上和 Windows 10 / 11</span>
           </div>
           <nav aria-label="页脚">
             <Link to="/manual">使用手册</Link>
             <Link to="/faq">常见问题</Link>
             <Link to="/download">下载</Link>
-            <a href={site.sourceUrl}>源代码</a>
+            <a href={site.sourceUrl}>源代码（macOS）</a>
+            <a href={site.win.sourceUrl}>源代码（Windows）</a>
           </nav>
           <p className="fine">MIT 许可证开源。</p>
         </div>

@@ -5,9 +5,9 @@ import { Rich } from '#/components/Rich'
 import { allFaqs } from '#/content/faq'
 import { downloadUrl, jsonLd, pageHead, site } from '#/site'
 
-const title = 'Shotlate：小而精的 macOS 截图工具，截图、标注、贴图和原位翻译'
+const title = 'Shotlate：小而精的截图工具，截图、标注、贴图和原位翻译（macOS / Windows）'
 const description =
-  'Shotlate 是免费开源的 macOS 截图工具：按 ⌥A 截图，7 种常用标注工具，本机识别文字，外文截图按 Y 就地翻成中文，还能把截图钉在屏幕上对照。支持 macOS 14 及以上。'
+  'Shotlate 是免费开源的截图工具：按 ⌥A（Windows 上是 Alt+Shift+A）截图，7 种常用标注工具，本机识别文字，外文截图按 Y 就地翻成中文，还能把截图钉在屏幕上对照。支持 macOS 14 及以上和 Windows 10 / 11。'
 
 export const Route = createFileRoute('/')({
   head: () => ({
@@ -18,7 +18,7 @@ export const Route = createFileRoute('/')({
         '@type': 'SoftwareApplication',
         name: 'Shotlate',
         applicationCategory: 'UtilitiesApplication',
-        operatingSystem: `macOS ${site.minMacOS}+`,
+        operatingSystem: `macOS ${site.minMacOS}+, Windows 10+`,
         license: 'https://opensource.org/licenses/MIT',
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'CNY' },
         description,
@@ -77,25 +77,28 @@ function Home() {
   return (
     <main>
       <section className="hero wrap">
-        <p className="kicker">macOS 截图工具 · 小而精 · 免费开源</p>
+        <p className="kicker">macOS 与 Windows 截图工具 · 小而精 · 免费开源</p>
         <h1>
           截图、标注、贴图，
           <br />
           外文截图按一下就是中文
         </h1>
         <p className="lead">
-          按 <kbd>⌥A</kbd> 开始截图。只保留每天真正用得上的功能；文字识别在本机完成，翻译时只把识别出的文字发给你配置的接口，截图本身不上传。
+          按 <kbd>⌥A</kbd>（Windows 上是 <kbd>Alt+Shift+A</kbd>）开始截图。只保留每天真正用得上的功能；文字识别在本机完成，翻译时只把识别出的文字发给你配置的接口，截图本身不上传。
         </p>
         <div className="cta">
           <a href={downloadUrl} className="btn">
-            下载 Shotlate
+            下载 macOS 版
           </a>
+          <Link to="/download" hash="windows" className="btn alt">
+            下载 Windows 版
+          </Link>
           <Link to="/manual" className="more">
             看使用手册
           </Link>
         </div>
         <p className="req">
-          安装包约 3.5 MB · 需要 macOS {site.minMacOS} 或更高版本 · Apple 芯片和 Intel 通用 · MIT 许可证
+          macOS 版约 3.5 MB，需要 macOS {site.minMacOS} 或更高版本，Apple 芯片和 Intel 通用 · Windows 版约 7 MB，需要 {site.win.minWindows} 或更高版本，x64 和 ARM64 · MIT 许可证
         </p>
         <figure className="hero-media">
           <Clip src="/shots/capture-flow.mp4" poster="/shots/capture-flow-poster.webp" w={1280} h={614} label="Shotlate 截图过程：选中窗口、框选、标注、识别文字" />
@@ -222,6 +225,23 @@ function Home() {
           <p>纯 Swift 编写，唯一的第三方依赖是负责自动更新的 Sparkle，也不内置浏览器内核。安装包约 3.5 MB，Apple 芯片和 Intel 通用；平时安静地待在菜单栏，内存占用约 50 MB。</p>
         </Feature>
 
+        <Feature
+          wide
+          id="windows"
+          title="Windows 上也是同一套"
+          media={<Clip src="/shots/win-capture-flow.mp4" poster="/shots/win-capture-flow-poster.webp" w={880} h={480} label="Windows 11 上用 Shotlate 截图：选中记事本窗口，框选，标注，识别文字，再贴图并选中复制文字" />}
+          caption="Windows 11 上的一次截图：选中窗口、框选、画框和箭头、序号加说明，按 X 识别文字，按 T 贴图后直接在贴图上选中文字。"
+        >
+          <p>Windows 版是用 Rust 单独写的原生应用，工具栏、标注、识别和翻译的操作方式与 macOS 版一致：⌘ 换成 Ctrl，⌥ 换成 Alt，工具的单键快捷键不变。常驻任务栏托盘，按 Alt+Shift+A 截图。</p>
+          <p>文字识别同样在本机完成，用的是开源的 PP-OCRv6 模型，第一次打开时下载约 23 MB。长截图和扫码暂时只有 macOS 版。</p>
+          <p>
+            <Link to="/download" hash="windows">
+              下载 Windows 版
+            </Link>{' '}
+            · <a href={site.win.sourceUrl}>源代码</a>
+          </p>
+        </Feature>
+
         <section className="extras">
           <h2>还有这些</h2>
           <dl>
@@ -265,7 +285,9 @@ function Home() {
           <img src="/icon-256.png" alt="" width="96" height="96" />
           <div>
             <h2>下载 Shotlate</h2>
-            <p>免费，适用于 macOS {site.minMacOS} 及以上。第一次打开时需要允许屏幕录制。</p>
+            <p>
+              免费，适用于 macOS {site.minMacOS} 及以上和 {site.win.minWindows} 及以上。macOS 版第一次打开时需要允许屏幕录制。
+            </p>
           </div>
           <Link to="/download" className="btn">
             前往下载
