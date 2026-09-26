@@ -1,0 +1,8 @@
+{
+  "Release notes 2.4 Published on September 12 • 4 min read": "2.4 版本说明\n发布于 9 月 12 日 · 阅读约 4 分钟",
+  "What's new": "新功能",
+  "• Export large projects up to three times faster. • Sync resumes automatically after the network drops. • Dark mode now follows the system setting.": "• 大型项目的导出速度最多提升到原来的三倍。\n• 网络断开后，同步会自动恢复。\n• 深色模式现在跟随系统设置。",
+  "Fixed": "修复",
+  "• The app no longer crashes when you open files larger than 2 GB. • Search results update while you type.": "• 打开超过 2 GB 的文件时不再崩溃。\n• 输入时搜索结果会实时更新。",
+  "Run brew upgrade notes to update from the command line.": "在命令行运行 brew upgrade notes 即可更新。"
+}
