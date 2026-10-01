@@ -46,7 +46,7 @@ pnpm run deploy         # 构建并发布到正式环境（--branch main）
 Shotlate 更新界面后可以重新生成：
 
 ```bash
-SHOTLATE_APP=~/superconductor/projects/Snap/build/Shotlate.app pnpm assets
+SHOTLATE_APP=../shotlate/build/Shotlate.app pnpm assets
 ```
 
 需要 Google Chrome（渲染示例页面）、ImageMagick 和 ffmpeg；长截图那一步需要终端有屏幕录制权限，没有时会跳过。

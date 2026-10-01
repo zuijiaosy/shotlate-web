@@ -79,6 +79,11 @@ function Manual() {
                         decoding="async"
                       />
                     )}
+                    {step.clip && (
+                      <video className="shot" controls playsInline preload="metadata"
+                        src={step.clip.src} poster={step.clip.poster}
+                        width={step.clip.w} height={step.clip.h} aria-label={step.clip.label} />
+                    )}
                   </li>
                 ))}
               </ol>

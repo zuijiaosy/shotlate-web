@@ -8,7 +8,7 @@
 set -euo pipefail
 here="$(cd "$(dirname "$0")" && pwd)"
 out="$here/../../public/shots"
-snap="${SHOTLATE_APP:-$HOME/superconductor/projects/Snap/build/Shotlate.app}/Contents/MacOS/Shotlate"
+snap="${SHOTLATE_APP:-$HOME/code/my/shotlate/build/Shotlate.app}/Contents/MacOS/Shotlate"
 chrome="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 work="$(mktemp -d)"
 trap 'rm -rf "$work"; [ -n "${mock:-}" ] && kill "$mock" 2>/dev/null || true' EXIT
@@ -41,7 +41,7 @@ webp "$work/f-03-selected.png" capture-flow-poster
 
 # In-place translation through the real layout code.
 node "$here/mock-translate.mjs" & mock=$!; sleep 1
-DEEPSEEK_API_KEY=local "$snap" --translate-image "$work/sample-doc.png" "$work/translated.png" --scale 2 -translate.baseURL http://127.0.0.1:8799 >/dev/null
+DEEPSEEK_API_KEY=local "$snap" --translate-image "$work/sample-doc.png" "$work/translated.png" --engine llm --scale 2 -translate.baseURL http://127.0.0.1:8799 >/dev/null
 webp "$work/sample-doc.png" translate-before "-resize 1200x"
 webp "$work/translated.png" translate-after "-resize 1200x"
 ffmpeg -y -loglevel error -loop 1 -t 2.2 -i "$work/sample-doc.png" -loop 1 -t 3 -i "$work/translated.png" -loop 1 -t 1.6 -i "$work/sample-doc.png" \
