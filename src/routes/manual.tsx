@@ -8,7 +8,7 @@ export const Route = createFileRoute('/manual')({
   head: () =>
     pageHead({
       title: '使用手册 · Shotlate',
-      description: 'Shotlate 的完整操作说明：选区、7 种标注工具、识别文字、原位翻译、贴图、长截图和设置项，附全部快捷键。',
+      description: 'Shotlate 的完整操作说明：选区、7 种标注工具、识别文字、原位翻译、贴图、长截图、录制 GIF 和设置项，附全部快捷键。',
       path: '/manual',
     }),
   component: Manual,

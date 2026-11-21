@@ -12,7 +12,7 @@ export const Route = createFileRoute('/download')({
   component: Download,
 })
 
-// What the Windows version has. Long screenshots, QR scanning, delayed capture, pasting from the clipboard
+// What the Windows version has. GIF recording, QR scanning, delayed capture, pasting from the clipboard
 // and translating / re-annotating pins are macOS only for now.
 const winIncluded = [
   '截图：单击选窗口或全屏，放大镜取色，多屏和不同缩放比例',
@@ -30,6 +30,7 @@ const included = [
   '免费翻译：无需 Key，截图和贴图上都能用',
   '贴图：钉在屏幕上，缩放、透明度、在贴图里选择文字、翻译和再标注',
   '长截图：手动或自动滚动，固定栏只保留一份',
+  '录制 GIF：框选区域录成动图，复制后粘贴到聊天软件里仍会动',
 ]
 
 function Download() {
@@ -141,7 +142,7 @@ function Download() {
             <li key={i}>{i}</li>
           ))}
         </ul>
-        <p>扫码、延时截图、从剪贴板贴图、贴图翻译和再标注目前只有 macOS 版。Windows 自动长截图时，鼠标移出选区会暂停。</p>
+        <p>录制 GIF、扫码、延时截图、从剪贴板贴图、贴图翻译和再标注目前只有 macOS 版。Windows 自动长截图时，鼠标移出选区会暂停。</p>
         <p>
           每个功能的具体用法见<Link to="/manual">使用手册</Link>，安装和权限问题见<Link to="/faq">常见问题</Link>。
         </p>
