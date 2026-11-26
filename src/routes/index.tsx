@@ -167,7 +167,7 @@ function Home() {
           media={<Clip src="/shots/translate.mp4" poster="/shots/translate-after.webp" w={1200} h={700} label="一份英文版本说明在原位变成中文" />}
           caption="一份英文版本说明，译文画回原来的位置。"
         >
-          <p>默认免费翻译，装完就能用，无需 API Key。Shotlate 先在本机识别文字，再把文字发给腾讯交互翻译，按原文的位置、字号和颜色画回译文。再按一次 Y 切回原文，截图本身不会上传。</p>
+          <p>默认免费翻译，装完就能用，无需 API Key。Shotlate 先在本机识别文字，再用 macOS 自带的翻译在本机翻好（系统较旧或没下载语言包时改用 B站开源的 Index-Translate，也可以换成腾讯、谷歌或必应），按原文的位置、字号和颜色画回译文。再按一次 Y 切回原文，截图本身不会上传。</p>
           <p>也可以切换到自己的 OpenAI 兼容大模型，已有 Key 的老用户保留原配置。超长段落会分批翻译并按顺序合并。macOS 的贴图也能按 Y 翻译。</p>
         </Feature>
 
