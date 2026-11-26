@@ -16,102 +16,118 @@ export const Route = createFileRoute('/manual')({
 
 function Manual() {
   return (
-    <main className="wrap page manual">
-      <aside className="toc" aria-label="目录">
-        <p className="toc-h">目录</p>
-        <ol>
-          {manual.map((s) => (
-            <li key={s.id}>
-              <a href={'#' + s.id}>{s.title}</a>
-            </li>
-          ))}
-        </ol>
-      </aside>
-      <article>
-        <h1>使用手册</h1>
-        <p className="lead">
-          这里是 Shotlate 的全部操作。快捷键里的 ⌘ 是 Command，⌥ 是 Option，⇧ 是 Shift。Windows 版的操作相同，⌘ 换成 Ctrl、⌥ 换成 Alt，开始截图默认是 Alt+Shift+A。
-        </p>
-        {manual.map((s) => (
-          <section key={s.id} id={s.id} className="msec">
-            <h2>{s.title}</h2>
-            {s.intro?.map((p) => (
-              <p key={p}>
-                <Rich text={p} />
-              </p>
+    <main>
+      <section className="page-banner">
+        <div className="ruler-top" aria-hidden="true" />
+        <div className="wrap page-banner-in">
+          <h1>使用手册</h1>
+          <p className="page-lead">
+            这里是 Shotlate 的全部操作。快捷键里的 <kbd>⌘</kbd> 是 Command，<kbd>⌥</kbd> 是 Option，<kbd>⇧</kbd> 是 Shift。Windows 版操作相同，⌘ 换 Ctrl、⌥ 换 Alt，开始截图默认是 <kbd>Alt+Shift+A</kbd>。
+          </p>
+        </div>
+      </section>
+
+      <div className="wrap page-body manual">
+        <aside className="toc" aria-label="目录">
+          <p className="toc-h">目录索引</p>
+          <ol>
+            {manual.map((s) => (
+              <li key={s.id}>
+                <a href={'#' + s.id}>{s.title}</a>
+              </li>
             ))}
-            {s.rows && (
-              <div className="table">
-                <table>
-                  <tbody>
-                    {s.rows.map(([k, v]) => (
-                      <tr key={k}>
-                        <th scope="row">
-                          <Rich text={k} />
-                        </th>
-                        <td>
-                          <Rich text={v} />
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-            {s.steps && (
-              <ol className="msteps">
-                {s.steps.map((step) => (
-                  <li key={step.title}>
-                    <h3>{step.title}</h3>
-                    {step.text.map((p) => (
-                      <p key={p}>
-                        <Rich text={p} />
-                      </p>
-                    ))}
-                    {step.shot && (
-                      <img
-                        className="shot"
-                        src={step.shot.src}
-                        width={step.shot.w}
-                        height={step.shot.h}
-                        alt={step.shot.alt}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    )}
-                    {step.clip && (
-                      <video className="shot" controls playsInline preload="metadata"
-                        src={step.clip.src} poster={step.clip.poster}
-                        width={step.clip.w} height={step.clip.h} aria-label={step.clip.label} />
-                    )}
-                  </li>
-                ))}
-              </ol>
-            )}
-            {s.after &&
-              (s.id === 'scroll' || s.id === 'translate' ? (
-                <ul>
-                  {s.after.map((p) => (
-                    <li key={p}>
-                      <Rich text={p} />
+          </ol>
+        </aside>
+        <article>
+          {manual.map((s) => (
+            <section key={s.id} id={s.id} className="msec">
+              <h2>{s.title}</h2>
+              {s.intro?.map((p) => (
+                <p key={p}>
+                  <Rich text={p} />
+                </p>
+              ))}
+              {s.rows && (
+                <div className="table">
+                  <table>
+                    <tbody>
+                      {s.rows.map(([k, v]) => (
+                        <tr key={k}>
+                          <th scope="row">
+                            <Rich text={k} />
+                          </th>
+                          <td>
+                            <Rich text={v} />
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+              {s.steps && (
+                <ol className="msteps">
+                  {s.steps.map((step) => (
+                    <li key={step.title}>
+                      <h3>{step.title}</h3>
+                      {step.text.map((p) => (
+                        <p key={p}>
+                          <Rich text={p} />
+                        </p>
+                      ))}
+                      {step.shot && (
+                        <img
+                          className="shot"
+                          src={step.shot.src}
+                          width={step.shot.w}
+                          height={step.shot.h}
+                          alt={step.shot.alt}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      )}
+                      {step.clip && (
+                        <video
+                          className="shot"
+                          controls
+                          playsInline
+                          preload="metadata"
+                          src={step.clip.src}
+                          poster={step.clip.poster}
+                          width={step.clip.w}
+                          height={step.clip.h}
+                          aria-label={step.clip.label}
+                        />
+                      )}
                     </li>
                   ))}
-                </ul>
-              ) : (
-                s.after.map((p) => (
-                  <p key={p}>
-                    <Rich text={p} />
-                  </p>
-                ))
-              ))}
-            {s.code && (
-              <pre className="term">
-                <code>{s.code}</code>
-              </pre>
-            )}
-          </section>
-        ))}
-      </article>
+                </ol>
+              )}
+              {s.after &&
+                (s.id === 'scroll' || s.id === 'translate' ? (
+                  <ul>
+                    {s.after.map((p) => (
+                      <li key={p}>
+                        <Rich text={p} />
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  s.after.map((p) => (
+                    <p key={p}>
+                      <Rich text={p} />
+                    </p>
+                  ))
+                ))}
+              {s.code && (
+                <pre className="term">
+                  <code>{s.code}</code>
+                </pre>
+              )}
+            </section>
+          ))}
+        </article>
+      </div>
     </main>
   )
 }

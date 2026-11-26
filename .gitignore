@@ -11,3 +11,9 @@ dist-ssr
 .vinxi
 __unconfig*
 todos.json
+.impeccable/build/
+.impeccable/mocks/
+.impeccable/questions/
+.impeccable/reference/
+.impeccable/review/
+.impeccable/config.local.json

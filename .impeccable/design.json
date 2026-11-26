@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-26T07:52:00Z",
+  "title": "Design System: Shotlate Official Website",
+  "extensions": {
+    "colorMeta": {
+      "shotlate-cobalt": {
+        "role": "primary",
+        "displayName": "Shotlate Cobalt",
+        "canonical": "#1363d6",
+        "tonalRamp": ["#07214a", "#0b3575", "#0e52b6", "#1363d6", "#3a81e8", "#74a8f2", "#b7d3fa", "#e6f0fd"]
+      },
+      "annotation-vermilion": {
+        "role": "secondary",
+        "displayName": "Annotation Vermilion",
+        "canonical": "#de4331",
+        "tonalRamp": ["#4c120b", "#7c1f14", "#b42f20", "#de4331", "#e9695a", "#f2998e", "#f9c8c2", "#fcebe8"]
+      },
+      "desktop-mist": {
+        "role": "neutral",
+        "displayName": "Desktop Mist",
+        "canonical": "#e5ebf2",
+        "tonalRamp": ["#121622", "#263044", "#434c5e", "#636e82", "#9aa6b8", "#c5d0df", "#e5ebf2", "#f6f8fb"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display Headline", "purpose": "Single-line hero thesis headline." },
+      "headline": { "displayName": "Section Headline", "purpose": "Primary section titles across all 4 routes." },
+      "body": { "displayName": "Body Copy", "purpose": "Honest concise explanations and manual reading prose." },
+      "label": { "displayName": "Coordinate & Spec Mono", "purpose": "Pixel dimensions, specs, ruler markers, and keyboard caps." }
+    },
+    "shadows": [
+      { "name": "window-specimen", "value": "0 10px 26px rgba(18, 22, 34, 0.08)", "purpose": "Floating macOS window specimens inside the hero selection aperture." },
+      { "name": "floating-toolbar", "value": "0 10px 26px rgba(18, 22, 34, 0.13)", "purpose": "Signature pure-icon Shotlate toolbar pill straddling the bottom selection border." },
+      { "name": "cobalt-pill", "value": "0 6px 18px rgba(19, 99, 214, 0.28)", "purpose": "Interactive [Y] in-place translation toggle riding the center scanline." }
+    ],
+    "motion": [
+      { "name": "control-snap", "value": "0.14s ease", "purpose": "Crisp native-macOS button, tab, and hover transitions." }
+    ],
+    "breakpoints": [
+      { "name": "tablet-wide", "value": "1060px" },
+      { "name": "tablet", "value": "860px" },
+      { "name": "mobile", "value": "600px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Download Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary macOS download CTA in Shotlate Cobalt.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">下载 macOS 版</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 22px; border-radius: 8px; background: var(--cobalt, #1363d6); color: #fff; font-weight: 600; font-size: 15px; text-decoration: none; transition: background-color 0.14s ease, transform 0.12s ease; } .ds-btn-primary:hover { background: var(--cobalt-hover, #0e52b6); } .ds-btn-primary:focus-visible { outline: 2px solid #1363d6; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Outlined Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Windows companion download and secondary action button.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">Windows 版</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 22px; border-radius: 8px; background: #fff; color: #121622; border: 1px solid #b6c2d3; font-weight: 600; font-size: 15px; text-decoration: none; transition: background-color 0.14s ease, border-color 0.14s ease; } .ds-btn-secondary:hover { background: #edf1f6; border-color: #636e82; }"
+    },
+    {
+      "name": "Selection Dimension Pill",
+      "kind": "chip",
+      "refersTo": "dimension-pill",
+      "description": "Calibrated coordinate badge pinned above active selection apertures.",
+      "html": "<div class=\"ds-dim-pill\">1120 × 440 · 原位翻译对照</div>",
+      "css": ".ds-dim-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 11px; border-radius: 6px 6px 0 0; background: #1363d6; color: #fff; font-family: ui-monospace, Menlo, monospace; font-size: 12.5px; font-weight: 600; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Spec Ledger Strip",
+      "kind": "custom",
+      "description": "Three-cell hairline-divided specification bar under hero CTAs.",
+      "html": "<div class=\"ds-spec-ledger\"><span>3.5 MB 安装包</span><span>50 MB 常驻</span><span>macOS 14+ &amp; Win</span></div>",
+      "css": ".ds-spec-ledger { display: inline-grid; grid-template-columns: repeat(3, auto); background: rgba(255,255,255,0.8); border: 1px solid #c5d0df; border-radius: 7px; font-family: ui-monospace, Menlo, monospace; font-size: 12.5px; color: #434c5e; } .ds-spec-ledger span { padding: 5px 10px; } .ds-spec-ledger span + span { border-left: 1px solid #c5d0df; }"
+    },
+    {
+      "name": "Floating Pure-Icon Toolbar",
+      "kind": "custom",
+      "refersTo": "toolbar-pill",
+      "description": "Signature Shotlate toolbar pill straddling the bottom border of the selection aperture.",
+      "html": "<div class=\"ds-toolbar\"><button>□</button><button>↗</button><button class=\"is-active\">文</button><button>✓</button></div>",
+      "css": ".ds-toolbar { display: inline-flex; gap: 4px; padding: 6px 10px; background: #fff; border: 1px solid #cbd5e3; border-radius: 12px; box-shadow: 0 10px 26px rgba(18, 22, 34, 0.13); } .ds-toolbar button { width: 34px; height: 34px; border: 0; border-radius: 8px; background: transparent; color: #121622; cursor: pointer; } .ds-toolbar button.is-active { background: #1363d6; color: #fff; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Live Selection Aperture",
+    "overview": "Shotlate's website speaks in the exact visual grammar of the macOS utility itself: opening the landing page feels like pressing ⌥A to freeze a screen region. Cool dimmed desktop mist holds a razor-sharp cobalt selection marquee with eight square handles, calibrated 1px pixel rulers along the edges, a pure-white active demonstration stage, and Shotlate's floating pure-icon toolbar pill straddling the bottom border.",
+    "keyCharacteristics": [
+      "Calibrated 1px top and left pixel coordinate rulers framing the hero selection canvas.",
+      "Pure-white illuminated selection apertures bordered in Shotlate Cobalt with eight square control handles.",
+      "Real keyboard-responsive proof (Y, X, 1–7, T, S, G) inside the hero stage.",
+      "High-contrast obsidian telemetry proof band anchoring real footprint numbers alongside an explicit anti-bloat list."
+    ],
+    "rules": [
+      { "name": "The Single-Highlight Rule", "body": "Shotlate Cobalt owns interactive focus and selection geometry; Annotation Vermilion appears only on actual screenshot callout overlays.", "section": "colors" },
+      { "name": "The No-Eyebrow Rule", "body": "Headings carry their own authority without small uppercase kickers stacked above them.", "section": "typography" },
+      { "name": "The Hairline-First Rule", "body": "Never add diffuse shadows to static sections, tables, or spec strips; reserve elevation for floating toolbars and window specimens.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do show real app-rendered screenshots, videos, shortcuts, and verified footprint figures (3.5 MB, ~50 MB).",
+      "Do keep tabular numerals on all coordinates, specs, and shortcut tables.",
+      "Do preserve keyboard responsiveness (Y, X, 1–7, T, S, G) and visible focus outlines."
+    ],
+    "donts": [
+      "Don't add generic icon-title-paragraph card grids, decorative glassmorphism, neon glows, or eyebrow labels above headings.",
+      "Don't fabricate download counts, user testimonials, or removed features.",
+      "Don't use Annotation Vermilion for non-annotation UI chrome or primary CTAs."
+    ]
+  }
+}

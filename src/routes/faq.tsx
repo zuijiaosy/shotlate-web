@@ -30,28 +30,43 @@ export const Route = createFileRoute('/faq')({
 
 function FaqPage() {
   return (
-    <main className="wrap page narrow">
-      <h1>常见问题</h1>
-      <p className="lead">
-        没找到答案的话，可以看看<Link to="/manual">使用手册</Link>。
-      </p>
-      {faqGroups.map((g) => (
-        <section key={g.title} className="faq-group">
-          <h2>{g.title}</h2>
-          <div className="qa">
-            {g.items.map((f) => (
-              <details key={f.q}>
-                <summary>{f.q}</summary>
-                {f.a.map((p) => (
-                  <p key={p}>
-                    <Rich text={p} />
-                  </p>
-                ))}
-              </details>
+    <main>
+      <section className="page-banner">
+        <div className="ruler-top" aria-hidden="true" />
+        <div className="wrap page-banner-in narrow">
+          <h1>常见问题</h1>
+          <p className="page-lead">
+            按安装权限、识别翻译、截图贴图和 Windows 版归类整理；没找到答案的话可以查看<Link to="/manual">完整使用手册</Link>。
+          </p>
+          <div className="jump-pills">
+            {faqGroups.map((g, idx) => (
+              <a key={g.title} href={`#faq-g-${idx}`}>
+                {g.title}
+              </a>
             ))}
           </div>
-        </section>
-      ))}
+        </div>
+      </section>
+
+      <div className="wrap page-body narrow">
+        {faqGroups.map((g, idx) => (
+          <section key={g.title} id={`faq-g-${idx}`} className="faq-group">
+            <h2>{g.title}</h2>
+            <div className="qa">
+              {g.items.map((f) => (
+                <details key={f.q}>
+                  <summary>{f.q}</summary>
+                  {f.a.map((p) => (
+                    <p key={p}>
+                      <Rich text={p} />
+                    </p>
+                  ))}
+                </details>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
     </main>
   )
 }
