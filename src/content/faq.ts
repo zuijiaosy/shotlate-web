@@ -12,7 +12,7 @@ export const faqGroups: { title: string; items: Faq[] }[] = [
       {
         q: '安装包多大？占多少内存？',
         a: [
-          '安装包约 3.5 MB，Apple 芯片和 Intel 通用。常驻菜单栏时，活动监视器里的内存占用约 50 MB。',
+          '安装包约 5.9 MB，Apple 芯片和 Intel 通用。常驻菜单栏静置时约 55 MB，日常截过几次图后常驻约 70 MB 左右。',
           'Windows 版安装包约 7 MB，x64 和 ARM64 分开下载；文字识别组件约 23 MB，第一次打开时下载。常驻托盘时内存约 20 MB，识别文字时临时升到 100 多 MB，空闲一分钟后回落。',
         ],
       },

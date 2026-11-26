@@ -70,7 +70,7 @@ function Home() {
           <div className="hero-head">
             <div className="hero-copy">
               <h1>截一张图，按 Y 原位译成中文</h1>
-              <p className="hero-sub">纯原生 3.5 MB · 7 种标注 · 本地离线识别与翻译 · 不上传截图</p>
+              <p className="hero-sub">纯原生 5.9 MB · 7 种标注 · 本地离线识别与翻译 · 不上传截图</p>
             </div>
             <div className="hero-actions">
               <div className="hero-cta-row">
@@ -83,8 +83,8 @@ function Home() {
                 </Link>
               </div>
               <div className="spec-ledger" aria-label="核心规格">
-                <span>3.5 MB 安装包</span>
-                <span>50 MB 常驻</span>
+                <span>5.9 MB 安装包</span>
+                <span>~55 MB 常驻</span>
                 <span>macOS {site.minMacOS}+ &amp; Win</span>
               </div>
             </div>
@@ -507,7 +507,7 @@ function Home() {
       <section className="band band-dark" id="light">
         <div className="wrap">
           <div className="band-head">
-            <h2>安装包 3.5 MB，常驻内存约 50 MB</h2>
+            <h2>安装包 5.9 MB，静置常驻约 55 MB</h2>
             <p>
               纯 Swift 编写，不内嵌浏览器内核，唯一的第三方依赖是负责自动更新的 Sparkle。Apple 芯片与 Intel 通用，平时安静待在菜单栏里。
             </p>
@@ -517,12 +517,12 @@ function Home() {
             <div>
               <div className="proof-metrics">
                 <div>
-                  <div className="proof-val">3.5 MB</div>
+                  <div className="proof-val">5.9 MB</div>
                   <div className="proof-label">macOS 通用 DMG</div>
                 </div>
                 <div>
-                  <div className="proof-val">~50 MB</div>
-                  <div className="proof-label">常驻菜单栏内存</div>
+                  <div className="proof-val">~55 MB</div>
+                  <div className="proof-label">静置常驻内存</div>
                 </div>
                 <div>
                   <div className="proof-val">1 个依赖</div>
@@ -536,13 +536,13 @@ function Home() {
               <figure className="proof-shot">
                 <img
                   src="/shots/memory.webp"
-                  width={1650}
-                  height={346}
-                  alt="活动监视器的内存页：Shotlate 占用 50.0 MB，4 个线程"
+                  width={1654}
+                  height={208}
+                  alt="活动监视器的内存页：Shotlate 占用 54.6 MB，7 个线程"
                   loading="lazy"
                   decoding="async"
                 />
-                <figcaption>活动监视器实测：常驻菜单栏时内存约 50.0 MB，4 个线程，和一个普通 node 进程相近。</figcaption>
+                <figcaption>活动监视器实测：静置常驻 54.6 MB（7 个线程），日常截过几次图后常驻约 70 MB 左右。</figcaption>
               </figure>
             </div>
 

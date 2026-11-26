@@ -44,7 +44,7 @@ function Download() {
             免费，MIT 许可证开源。macOS 为主推原生版本，Windows 版独立维护；两平台均支持免费原位翻译与手动 / 自动长截图，核心快捷键一致。
           </p>
           <div className="jump-pills">
-            <a href="#mac">macOS 版（主推 · 3.5 MB）</a>
+            <a href="#mac">macOS 版（主推 · 5.9 MB）</a>
             <a href="#windows">Windows 版（7 MB）</a>
           </div>
         </div>
@@ -61,7 +61,7 @@ function Download() {
             <div>
               <h2>macOS 版</h2>
               <p className="platform-meta">
-                安装包约 3.5 MB · 适用于 macOS {site.minMacOS} 及以上 · Apple 芯片与 Intel 通用 · 内置 Sparkle 自动更新
+                安装包约 5.9 MB · 适用于 macOS {site.minMacOS} 及以上 · Apple 芯片与 Intel 通用 · 内置 Sparkle 自动更新
               </p>
             </div>
             <a className="btn" href={downloadUrl}>

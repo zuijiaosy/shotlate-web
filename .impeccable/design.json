@@ -72,7 +72,7 @@
       "name": "Spec Ledger Strip",
       "kind": "custom",
       "description": "Three-cell hairline-divided specification bar under hero CTAs.",
-      "html": "<div class=\"ds-spec-ledger\"><span>3.5 MB 安装包</span><span>50 MB 常驻</span><span>macOS 14+ &amp; Win</span></div>",
+      "html": "<div class=\"ds-spec-ledger\"><span>5.9 MB 安装包</span><span>~55 MB 常驻</span><span>macOS 14+ &amp; Win</span></div>",
       "css": ".ds-spec-ledger { display: inline-grid; grid-template-columns: repeat(3, auto); background: rgba(255,255,255,0.8); border: 1px solid #c5d0df; border-radius: 7px; font-family: ui-monospace, Menlo, monospace; font-size: 12.5px; color: #434c5e; } .ds-spec-ledger span { padding: 5px 10px; } .ds-spec-ledger span + span { border-left: 1px solid #c5d0df; }"
     },
     {
@@ -99,7 +99,7 @@
       { "name": "The Hairline-First Rule", "body": "Never add diffuse shadows to static sections, tables, or spec strips; reserve elevation for floating toolbars and window specimens.", "section": "elevation" }
     ],
     "dos": [
-      "Do show real app-rendered screenshots, videos, shortcuts, and verified footprint figures (3.5 MB, ~50 MB).",
+      "Do show real app-rendered screenshots, videos, shortcuts, and verified footprint figures (5.9 MB, ~55 MB).",
       "Do keep tabular numerals on all coordinates, specs, and shortcut tables.",
       "Do preserve keyboard responsiveness (Y, X, 1–7, T, S, G) and visible focus outlines."
     ],

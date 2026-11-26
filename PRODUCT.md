@@ -27,7 +27,7 @@ Shotlate is a small, sharp, free open-source (MIT) screenshot tool that delibera
 ## Capabilities and Constraints
 
 - Technical stack: TanStack Start + React 19 + Vite 8 + static prerendering (`pnpm run build`), deployed to Cloudflare Pages (`https://shotlate.pages.dev`).
-- Real metrics only: macOS universal DMG ~3.5 MB, pure Swift + Sparkle auto-update only, ~50 MB resident RAM, requires macOS 14+; Windows installer ~7 MB (x64 & ARM64), ~20 MB resident RAM, requires Windows 10 2004+.
+- Real metrics only: macOS universal DMG ~5.9 MB (5.62 MiB), pure Swift + Sparkle auto-update only, ~55 MB idle resident RAM (~70 MB after use), requires macOS 14+; Windows installer ~7 MB (x64 & ARM64), ~20 MB resident RAM, requires Windows 10 2004+.
 - Privacy truth: OCR is always local; macOS 26+ system translation is local/offline; online engines only send recognized text, never the screenshot image itself.
 - Language: Simplified Chinese UI and copy (`zh-CN`), with English/technical identifiers (`Shotlate`, shortcuts, `MIT`, `GitHub`, `macOS`, `Windows`) where accurate.
 - Non-goals: Never invent user testimonials, star/download counts, press quotes, pricing tiers, or removed/unimplemented features.

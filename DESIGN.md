@@ -98,7 +98,7 @@ Below the opening stage and across the Manual, FAQ, and Download routes, the sys
 - Calibrated 1px top and left pixel coordinate rulers framing the hero selection canvas.
 - Pure-white illuminated selection apertures bordered in Shotlate Cobalt with eight square control handles.
 - Real keyboard-responsive proof (`Y`, `X`, `1`–`7`, `T`, `S`, `G`) inside the hero stage.
-- High-contrast obsidian telemetry proof band anchoring real footprint numbers (`3.5 MB`, `~50 MB`) alongside an explicit anti-bloat list.
+- High-contrast obsidian telemetry proof band anchoring real footprint numbers (`5.9 MB`, `~55 MB`) alongside an explicit anti-bloat list.
 
 ## Colors
 
@@ -117,7 +117,7 @@ The palette pairs cool neutral desktop surfaces with one disciplined cobalt sele
 - **Workbench Ground** (`workbench-ground`): Clean light reading surface between bands and on documentation pages.
 - **Aperture White** (`aperture-white`): Pure-white illuminated selection frames, macOS window specimens, floating toolbar pill, and sticky navigation header.
 - **Recessed Slate** (`recessed-slate`): Specimen header bars, macOS window sidebars, and key-value table headers.
-- **Obsidian Panel** (`obsidian-panel` / `obsidian-elevated`): Dedicated high-contrast telemetry band (`3.5 MB` / `~50 MB` proof) and terminal source-build code blocks.
+- **Obsidian Panel** (`obsidian-panel` / `obsidian-elevated`): Dedicated high-contrast telemetry band (`5.9 MB` / `~55 MB` proof) and terminal source-build code blocks.
 - **Ink Primary / Secondary / Muted** (`ink-primary`, `ink-secondary`, `ink-muted`): Charcoal-slate text hierarchy preserving ≥4.5:1 contrast on light surfaces.
 - **Hairline / Hairline Strong** (`hairline`, `hairline-strong`): 1px structural borders, ruler ticks, and outlined button strokes.
 
@@ -172,7 +172,7 @@ Sharp precision meets subtle macOS corner softness: active selection apertures u
 ## Do's and Don'ts
 
 ### Do:
-- **Do** show real app-rendered screenshots, videos, shortcuts, and verified footprint figures (`3.5 MB`, `~50 MB`).
+- **Do** show real app-rendered screenshots, videos, shortcuts, and verified footprint figures (`5.9 MB`, `~55 MB`).
 - **Do** keep tabular numerals (`font-variant-numeric: tabular-nums`) on all coordinates, specs, and shortcut tables.
 - **Do** preserve keyboard responsiveness (`Y`, `X`, `1`–`7`, `T`, `S`, `G`) and visible focus outlines (`2px solid #1363d6`).
 
